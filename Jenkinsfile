@@ -1,9 +1,5 @@
 pipeline {
-    agent { 
-        node {
-            label my_pc
-            }
-      }
+    agent any
     triggers {
         pollSCM '* * * * *'
     }
