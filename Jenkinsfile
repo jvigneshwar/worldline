@@ -1,11 +1,26 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Hello') {
+    agent { 
+        node {
+            label my_pc
+            }
+      }
+    triggers {
+        pollSCM '* * * * *'
+    }
+     stages {
+        stage('Build') {
             steps {
-                bat 'python --version'
-                bat 'python hello.py'
+                echo "Building.."
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Testing.."
+            }
+        }
+        stage('Deliver') {
+            steps {
+                echo "Delivery.."
             }
         }
     }
